@@ -1,15 +1,14 @@
 package bridge;
 
-/**
- * 사용자로부터 입력을 받는 역할을 한다.
- */
+import camp.nextstep.edu.missionutils.Console;
+
 public class InputView {
 
-    /**
-     * 다리의 길이를 입력받는다.
-     */
-    public int readBridgeSize() {
-        return 0;
+    public static int readBridgeSize() {
+        System.out.println("다리 길이를 입력해주세요.");
+        String bridgeSizeInput = Console.readLine();
+        isDigit(bridgeSizeInput);
+        return Integer.parseInt(bridgeSizeInput);
     }
 
     /**
@@ -24,5 +23,13 @@ public class InputView {
      */
     public String readGameCommand() {
         return null;
+    }
+
+    private static void isDigit(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
+            }
+        }
     }
 }
