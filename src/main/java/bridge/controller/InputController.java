@@ -18,7 +18,7 @@ public class InputController {
         }
     }
 
-    public BridgeGame movePlayer(BridgeGame bridgeGame, String movingInput) {
+    public BridgeGame  movePlayer(BridgeGame bridgeGame, String movingInput) {
         while (true) {
             try {
                 bridgeGame.move(movingInput);

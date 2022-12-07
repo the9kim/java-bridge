@@ -1,10 +1,14 @@
 package bridge;
 
+import bridge.domain.Bridge;
 import bridge.domain.Movement;
+import bridge.domain.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -31,6 +35,24 @@ class BridgeGameTest {
         bridgeGame.move(input);
 
         assertThat(bridgeGame.getPlayer()).containsAnyOf(Movement.UP, Movement.DOWN);
+    }
+
+    @DisplayName("다리를 건넌 결과를 산출한다")
+    @Test
+    void updateResult() {
+        Bridge bridge = Bridge.of(List.of("U","D","U"));
+
+        BridgeGame bridgeGame = new BridgeGame();
+        bridgeGame.move("U");
+        bridgeGame.move("D");
+        bridgeGame.move("D");
+
+        Result result = bridgeGame.updateResult(bridge);
+
+        System.out.println(bridge.getRandomNumber());
+        System.out.println(bridgeGame.getPlayer());
+        System.out.println(result.getRoute());
+        OutputView.printMap(bridgeGame, result);
     }
 
 }

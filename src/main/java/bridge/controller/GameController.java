@@ -2,6 +2,7 @@ package bridge.controller;
 
 import bridge.BridgeGame;
 import bridge.InputView;
+import bridge.OutputView;
 import bridge.domain.Bridge;
 import bridge.domain.Result;
 
@@ -23,7 +24,8 @@ public class GameController {
         BridgeGame bridgeGame = new BridgeGame();
         do {
             inputController.movePlayer(bridgeGame, InputView.readMoving());
-            bridgeGame.updateResult(bridge);
+            Result result = bridgeGame.updateResult(bridge);
+            OutputView.printMap(bridgeGame, result);
         } while (bridgeGame.checkAnswer());
         if (inputController.checkRetry(bridgeGame, InputView.readGameCommand())) {
             acrossABridge(bridge);

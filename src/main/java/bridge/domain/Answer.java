@@ -24,4 +24,10 @@ public enum Answer {
     public boolean isCheck() {
         return check;
     }
+
+    public String getIndicator() {
+
+
+        return indicator;
+    }
 }

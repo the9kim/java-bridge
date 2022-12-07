@@ -30,4 +30,8 @@ public enum Movement {
         }
         return null;
     }
+
+    public String getDirection() {
+        return direction;
+    }
 }

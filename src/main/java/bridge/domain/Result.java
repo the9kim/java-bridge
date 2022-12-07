@@ -8,6 +8,7 @@ import java.util.List;
 public class Result {
 
     private List<Answer> route = new ArrayList<>();
+    private int trialNumber = 1;
     private String resultComment;
     private final String SUCCESS_COMMENT = "성공";
     private final String FAILURE_COMMENT = "실패";
@@ -29,5 +30,13 @@ public class Result {
             return true;
         }
         return false;
+    }
+
+    public void updateTrialNumber() {
+        trialNumber++;
+    }
+
+    public List<Answer> getRoute() {
+        return route;
     }
 }

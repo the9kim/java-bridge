@@ -17,10 +17,6 @@ public class BridgeGame {
     private List<Movement> player = new ArrayList<>();
 
     private static final String RETRY_CHOICE = "R";
-    private static final String STOP_CHOICE = "Q";
-
-
-
 
     public void move(String movingInput) {
         validateDirection(movingInput);
@@ -35,6 +31,7 @@ public class BridgeGame {
      */
     public boolean retry(String retryDecision) {
         validateRetryDecision(retryDecision);
+        result.updateTrialNumber();
         if (retryDecision.equals(RETRY_CHOICE)) {
             return true;
         }
@@ -53,22 +50,27 @@ public class BridgeGame {
         }
     }
 
-    public void updateResult(Bridge bridge) {
-        boolean checkAnswer = compareBridgeWithPlayer(bridge);
-        Answer answer = Answer.findBy(checkAnswer);
-        result.setRoute(answer);
+    public Result updateResult(Bridge bridge) {
+        for (int i = 0; i < player.size(); i++) {
+            boolean checkAnswer = compareBridgeWithPlayer(i, bridge);
+            Answer answer = Answer.findBy(checkAnswer);
+            result.setRoute(answer);
+        }
+        return result;
     }
 
-    private boolean compareBridgeWithPlayer(Bridge bridge) {
-        for (int i = 0; i < player.size(); i++) {
-            if (player.get(i).equals(bridge.getRandomNumber().get(i))) {
-                return false;
-            }
+    private boolean compareBridgeWithPlayer(int index, Bridge bridge) {
+        if (player.get(index).getDirection().equals(bridge.getRandomNumber().get(index))) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public boolean checkAnswer() {
         return result.checkSuccessOfFailure();
+    }
+
+    public List<Movement> getPlayer() {
+        return player;
     }
 }
