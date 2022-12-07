@@ -13,4 +13,9 @@ public class Bridge {
     public static Bridge of(List<String> randomNumber) {
         return new Bridge(randomNumber);
     }
+
+    public List<String> getRandomNumber() {
+        return randomNumber;
+    }
+
 }
