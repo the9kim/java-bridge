@@ -40,7 +40,7 @@ class BridgeGameTest {
     @DisplayName("다리를 건넌 결과를 산출한다")
     @Test
     void updateResult() {
-        Bridge bridge = Bridge.of(List.of("U","D","U"));
+        Bridge bridge = Bridge.of(List.of("U", "D", "U"));
 
         BridgeGame bridgeGame = new BridgeGame();
         bridgeGame.move("U");

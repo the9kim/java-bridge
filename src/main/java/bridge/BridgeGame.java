@@ -32,10 +32,14 @@ public class BridgeGame {
     public boolean retry(String retryDecision) {
         validateRetryDecision(retryDecision);
         result.updateTrialNumber();
-        if (retryDecision.equals(RETRY_CHOICE)) {
-            return true;
-        }
-        return false;
+        return checkRetryDecision(retryDecision);
+    }
+
+    public Result updateResult(Bridge bridge) {
+        boolean checkAnswer = compareBridgeWithPlayer(player.size() - 1, bridge);
+        Answer answer = Answer.findBy(checkAnswer);
+        result.setRoute(answer);
+        return result;
     }
 
     private void validateDirection(String movingInput) {
@@ -50,13 +54,17 @@ public class BridgeGame {
         }
     }
 
-    public Result updateResult(Bridge bridge) {
-        for (int i = 0; i < player.size(); i++) {
-            boolean checkAnswer = compareBridgeWithPlayer(i, bridge);
-            Answer answer = Answer.findBy(checkAnswer);
-            result.setRoute(answer);
+    private void resetPlayer() {
+        player.clear();
+    }
+
+    private boolean checkRetryDecision(String retryDecision) {
+        if (retryDecision.equals(RETRY_CHOICE)) {
+            resetPlayer();
+            result.resetRoute();
+            return true;
         }
-        return result;
+        return false;
     }
 
     private boolean compareBridgeWithPlayer(int index, Bridge bridge) {
@@ -72,5 +80,13 @@ public class BridgeGame {
 
     public List<Movement> getPlayer() {
         return player;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public int getGameRound() {
+        return player.size();
     }
 }

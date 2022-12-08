@@ -3,25 +3,27 @@ package bridge.controller;
 import bridge.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.InputView;
 import bridge.domain.Bridge;
 
 public class InputController {
 
-    public Bridge createBridge(int readBridgeSize) {
+    public Bridge createBridge() {
         while (true) {
             try {
                 BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-                Bridge.of(bridgeMaker.makeBridge(readBridgeSize));
+                return Bridge.of(bridgeMaker.makeBridge(InputView.readBridgeSize()));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public BridgeGame  movePlayer(BridgeGame bridgeGame, String movingInput) {
+    public void movePlayer(BridgeGame bridgeGame) {
         while (true) {
             try {
-                bridgeGame.move(movingInput);
+                bridgeGame.move(InputView.readMoving());
+                return;
             } catch (IllegalArgumentException e2) {
                 System.out.println(e2.getMessage());
             }
@@ -29,10 +31,10 @@ public class InputController {
     }
 
 
-    public boolean checkRetry(BridgeGame bridgeGame, String gameCommand) {
+    public boolean checkRetry(BridgeGame bridgeGame) {
         while (true) {
             try {
-               return bridgeGame.retry(gameCommand);
+                return bridgeGame.retry(InputView.readGameCommand());
             } catch (IllegalArgumentException e3) {
                 System.out.println(e3.getMessage());
             }

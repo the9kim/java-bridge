@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class BridgeMakerTest {
 
     @DisplayName("3미만, 20초과 숫자를 입력하여 다리를 생성할 경우 예외가 발생한다.")
-    @ValueSource(ints = {0,1,2,21,22})
+    @ValueSource(ints = {0, 1, 2, 21, 22})
     @ParameterizedTest
     void makeBridgeWithWrongRangeInput(int input) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());

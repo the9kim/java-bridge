@@ -1,7 +1,6 @@
 package bridge.controller;
 
 import bridge.BridgeGame;
-import bridge.InputView;
 import bridge.OutputView;
 import bridge.domain.Bridge;
 import bridge.domain.Result;
@@ -12,23 +11,28 @@ public class GameController {
 
     public void run() {
         Bridge bridge = generateBride();
-        acrossABridge(bridge);
+        BridgeGame bridgeGame = acrossABridge(bridge, new BridgeGame());
+        OutputView.printResult(bridgeGame);
     }
 
     private Bridge generateBride() {
-        Bridge bridge = inputController.createBridge(InputView.readBridgeSize());
+        Bridge bridge = inputController.createBridge();
         return bridge;
     }
 
-    private void acrossABridge(Bridge bridge) {
-        BridgeGame bridgeGame = new BridgeGame();
+    private BridgeGame acrossABridge(Bridge bridge, BridgeGame bridgeGame) {
         do {
-            inputController.movePlayer(bridgeGame, InputView.readMoving());
+            inputController.movePlayer(bridgeGame);
             Result result = bridgeGame.updateResult(bridge);
             OutputView.printMap(bridgeGame, result);
-        } while (bridgeGame.checkAnswer());
-        if (inputController.checkRetry(bridgeGame, InputView.readGameCommand())) {
-            acrossABridge(bridge);
+        } while (bridgeGame.checkAnswer() && bridgeGame.getGameRound() < bridge.getBridgeSize());
+        checkRetrial(bridge, bridgeGame);
+        return bridgeGame;
+    }
+
+    private void checkRetrial(Bridge bridge, BridgeGame bridgeGame) {
+        if (!bridgeGame.checkAnswer() && inputController.checkRetry(bridgeGame)) {
+            acrossABridge(bridge, bridgeGame);
         }
     }
 }

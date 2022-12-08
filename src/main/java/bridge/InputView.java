@@ -8,6 +8,7 @@ public class InputView {
         System.out.println("다리 길이를 입력해주세요.");
         String bridgeSizeInput = Console.readLine();
         isDigit(bridgeSizeInput);
+        isBlank(bridgeSizeInput);
         return Integer.parseInt(bridgeSizeInput);
     }
 
@@ -29,6 +30,12 @@ public class InputView {
             if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
             }
+        }
+    }
+
+    private static void isBlank(String bridgeSizeInput) {
+        if (bridgeSizeInput.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 공백은 입력할 수 없습니다.");
         }
     }
 }

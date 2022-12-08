@@ -1,7 +1,5 @@
 package bridge.domain;
 
-import bridge.BridgeGame;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +18,10 @@ public class Result {
 
     private void updateResultComment(Answer answer) {
         if (answer.isCheck()) {
-            resultComment = SUCCESS_COMMENT;
+            resultComment = "성공";
+            return;
         }
-        resultComment = FAILURE_COMMENT;
+        resultComment = "실패";
     }
 
     public boolean checkSuccessOfFailure() {
@@ -38,5 +37,17 @@ public class Result {
 
     public List<Answer> getRoute() {
         return route;
+    }
+
+    public String getResultComment() {
+        return resultComment;
+    }
+
+    public int getTrialNumber() {
+        return trialNumber;
+    }
+
+    public void resetRoute() {
+        route.clear();
     }
 }

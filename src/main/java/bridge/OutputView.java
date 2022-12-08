@@ -26,12 +26,12 @@ public class OutputView {
 
     private static StringBuilder addStrings(String printLevel, BridgeGame bridgeGame, Result result) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(OPENING_BRACKET+BLANK);
+        stringBuilder.append(OPENING_BRACKET + BLANK);
         for (int i = 0; i < bridgeGame.getPlayer().size(); i++) {
             stringBuilder.append(addAnswerIndicator(printLevel, bridgeGame.getPlayer().get(i), result.getRoute().get(i)));
             stringBuilder.append(addDivider(i, bridgeGame));
         }
-        stringBuilder.append(BLANK+CLOSING_BRACKET);
+        stringBuilder.append(BLANK + CLOSING_BRACKET);
         return stringBuilder;
     }
 
@@ -42,8 +42,8 @@ public class OutputView {
         return BLANK;
     }
 
-    private static String addDivider(int i , BridgeGame bridgeGame) {
-        if (i == bridgeGame.getPlayer().size()-1) {
+    private static String addDivider(int i, BridgeGame bridgeGame) {
+        if (i == bridgeGame.getPlayer().size() - 1) {
             return "";
         }
         return BLANK + DIVIDER + BLANK;
@@ -55,6 +55,10 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public static void printResult(BridgeGame bridgeGame) {
+        System.out.println("최종 게임 결과");
+        printMap(bridgeGame, bridgeGame.getResult());
+        System.out.printf("게임 성공 여부: %s\n", bridgeGame.getResult().getResultComment());
+        System.out.printf("총 시도한 횟수: %d\n", bridgeGame.getResult().getTrialNumber());
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Bridge {
 
-    List<String> randomNumber;
+    private List<String> randomNumber;
 
     private Bridge(List<String> randomNumbers) {
         this.randomNumber = randomNumbers;
@@ -18,4 +18,7 @@ public class Bridge {
         return randomNumber;
     }
 
+    public int getBridgeSize() {
+        return randomNumber.size();
+    }
 }
