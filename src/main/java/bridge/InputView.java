@@ -1,15 +1,19 @@
 package bridge;
 
-/**
- * 사용자로부터 입력을 받는 역할을 한다.
- */
+import camp.nextstep.edu.missionutils.Console;
+
 public class InputView {
 
     /**
      * 다리의 길이를 입력받는다.
      */
-    public int readBridgeSize() {
-        return 0;
+    public static int readBridgeSize() {
+        System.out.println("다리 건너기 게임을 시작합니다.");
+        System.out.println("다리의 길이를 입력해주세요.");
+        String input = Console.readLine();
+        isBlank(input);
+        isDigit(input);
+        return Integer.parseInt(input);
     }
 
     /**
@@ -25,4 +29,19 @@ public class InputView {
     public String readGameCommand() {
         return null;
     }
+
+    private static void isBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 공백은 입력할 수 없습니다.");
+        }
+    }
+
+    private static void isDigit(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 정수가 아닙니다.");
+            }
+        }
+    }
+
 }
