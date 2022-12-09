@@ -32,9 +32,13 @@ public class GameController {
             bridgeGame.checkMovingResult(bridge);
             OutputView.printMap(bridgeGame);
         } while (bridgeGame.getPlayerRoute().size() < bridge.size() && Result.isIsSuccessOrFailure());
+        checkRetry(bridge, bridgeGame);
+        return bridgeGame;
+    }
+
+    private void checkRetry(List<String> bridge, BridgeGame bridgeGame) {
         if (!Result.isIsSuccessOrFailure() && InputController.checkRetry(bridgeGame)) {
             crossABridge(bridge, bridgeGame);
         }
-        return bridgeGame;
     }
 }

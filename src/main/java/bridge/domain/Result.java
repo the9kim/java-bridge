@@ -12,7 +12,7 @@ public class Result {
     public static void updateResult(Answer answer) {
         addResult(answer);
         updateSuccess(answer);
-        }
+    }
 
 
     private static void addResult(Answer answer) {
@@ -22,6 +22,7 @@ public class Result {
     public static void updateTrialNumber() {
         trialNumber++;
     }
+
     private static void updateSuccess(Answer answer) {
         if (answer.isAnswer()) {
             isSuccessOrFailure = true;

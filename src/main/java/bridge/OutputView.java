@@ -23,24 +23,25 @@ public class OutputView {
     }
 
     private static StringBuilder makeUpperLine(StringBuilder stringBuilder, BridgeGame bridgeGame) {
-        stringBuilder.append(OPENING_BRACKET+BLANK);
+        stringBuilder.append(OPENING_BRACKET + BLANK);
         for (int i = 0; i < Result.getMovingResult().size(); i++) {
             stringBuilder.append(addAnswerIndicator(UPPER_DIRECTION, i, bridgeGame));
             stringBuilder.append(addDivider(i));
         }
-        stringBuilder.append(BLANK+CLOSING_BRACKET);
+        stringBuilder.append(BLANK + CLOSING_BRACKET);
         return stringBuilder;
     }
 
     private static StringBuilder makeLowerLine(StringBuilder stringBuilder, BridgeGame bridgeGame) {
-        stringBuilder.append(OPENING_BRACKET+BLANK);
+        stringBuilder.append(OPENING_BRACKET + BLANK);
         for (int i = 0; i < Result.getMovingResult().size(); i++) {
             stringBuilder.append(addAnswerIndicator(LOWER_DIRECTION, i, bridgeGame));
             stringBuilder.append(addDivider(i));
         }
-        stringBuilder.append(BLANK+CLOSING_BRACKET);
+        stringBuilder.append(BLANK + CLOSING_BRACKET);
         return stringBuilder;
     }
+
     private static String addAnswerIndicator(String direction, int index, BridgeGame bridgeGame) {
         if (direction.equals(bridgeGame.getPlayerRoute().get(index))) {
             return Result.getMovingResult().get(index).getIndicator();
@@ -49,10 +50,10 @@ public class OutputView {
     }
 
     private static String addDivider(int index) {
-        if (index == Result.getMovingResult().size()-1) {
+        if (index == Result.getMovingResult().size() - 1) {
             return "";
         }
-        return BLANK+DIVIDER+BLANK;
+        return BLANK + DIVIDER + BLANK;
     }
 
     public static void printResult(BridgeGame bridgeGame) {

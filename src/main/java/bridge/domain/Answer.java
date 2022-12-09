@@ -15,19 +15,12 @@ public enum Answer {
     }
 
     public static Answer findBy(boolean isAnswer) {
-        for (Answer answer : Answer.values()) {
-            if (isAnswer == answer.isAnswer) {
-                return answer;
-            }
-        }
-        return null;
-        /*
         return Arrays.stream(Answer.values())
                 .filter(answer -> answer.isAnswer == isAnswer)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 올바르지 않은 인자입니다."));
 
-         */
+
     }
 
     public boolean isAnswer() {
