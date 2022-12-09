@@ -1,5 +1,7 @@
 package bridge.controller;
 
+import bridge.BridgeGame;
+
 import java.util.List;
 
 public class GameController {
@@ -12,7 +14,7 @@ public class GameController {
 
     public void run() {
         List<String> bridge = generateBridge();
-        crossABridge(bridge);
+        crossABridge(bridge, new BridgeGame());
     }
 
     private List<String> generateBridge() {
@@ -20,7 +22,7 @@ public class GameController {
         return bridge;
     }
 
-    private void crossABridge(List<String> bridge) {
-        inputController.movePlayer();
+    private void crossABridge(List<String> bridge, BridgeGame bridgeGame) {
+        inputController.movePlayer(bridgeGame);
     }
 }

@@ -1,5 +1,6 @@
 package bridge.controller;
 
+import bridge.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.InputView;
@@ -18,7 +19,7 @@ public class InputController {
         }
     }
 
-    public void movePlayer() {
-        InputView.readMoving();
+    public void movePlayer(BridgeGame bridgeGame) {
+        bridgeGame.move(InputView.readMoving());
     }
 }
