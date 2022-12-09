@@ -1,5 +1,6 @@
 package bridge;
 
+import bridge.domain.Answer;
 import bridge.domain.Result;
 
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.List;
 
 public class BridgeGame {
 
-    private Result result = new Result();
     private List<String> playerRoute = new ArrayList<>();
 
     public void move(String movingInput) {
@@ -18,7 +18,8 @@ public class BridgeGame {
     public boolean checkMovingResult(List<String> bridge) {
         int index = getRouteIndex();
         boolean result = compareBridgeAndPlayer(bridge, index);
-        return result;
+        Result.updateResult(Answer.findBy(result));
+        return;
     }
 
     public void retry() {
