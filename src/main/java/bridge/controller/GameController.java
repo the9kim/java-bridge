@@ -12,9 +12,15 @@ public class GameController {
 
     public void run() {
         List<String> bridge = generateBridge();
+        crossABridge(bridge);
     }
 
     private List<String> generateBridge() {
         List<String> bridge = inputController.createBridge();
+        return bridge;
+    }
+
+    private void crossABridge(List<String> bridge) {
+        inputController.movePlayer();
     }
 }

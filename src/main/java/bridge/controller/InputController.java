@@ -17,4 +17,8 @@ public class InputController {
             }
         }
     }
+
+    public void movePlayer() {
+        InputView.readMoving();
+    }
 }
