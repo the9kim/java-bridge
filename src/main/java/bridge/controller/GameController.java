@@ -23,6 +23,11 @@ public class GameController {
     }
 
     private void crossABridge(List<String> bridge, BridgeGame bridgeGame) {
-        inputController.movePlayer(bridgeGame);
+        do {
+            inputController.movePlayer(bridgeGame);
+            boolean result = bridgeGame.checkMovingResult(bridge);
+
+        } while ();
+
     }
 }
