@@ -6,12 +6,11 @@ import java.util.List;
 public class Result {
 
     private static List<Answer> movingResult = new ArrayList<>();
-    private static int trialNumber;
+    private static int trialNumber = 1;
     private static boolean isSuccessOrFailure;
 
     public static void updateResult(Answer answer) {
         addResult(answer);
-        updateTrialNumber(answer);
         updateSuccess(answer);
         }
 
@@ -20,10 +19,8 @@ public class Result {
         movingResult.add(answer);
     }
 
-    private static void updateTrialNumber(Answer answer) {
-        if (!answer.isAnswer()) {
-            trialNumber++;
-        }
+    public static void updateTrialNumber() {
+        trialNumber++;
     }
     private static void updateSuccess(Answer answer) {
         if (answer.isAnswer()) {
@@ -43,5 +40,9 @@ public class Result {
 
     public static void resultMovingResult() {
         movingResult.clear();
+    }
+
+    public static int getTrialNumber() {
+        return trialNumber;
     }
 }

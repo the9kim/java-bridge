@@ -27,6 +27,7 @@ public class BridgeGame {
         if (retryCommand.equals(RETRY_DECISION)) {
             resetPlayerRoute();
             Result.resultMovingResult();
+            Result.updateTrialNumber();
             return true;
         }
         return false;

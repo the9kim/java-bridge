@@ -17,7 +17,8 @@ public class GameController {
     public void run() {
         List<String> bridge = generateBridge();
         System.out.println(bridge);
-        crossABridge(bridge, new BridgeGame());
+        BridgeGame bridgeGame = crossABridge(bridge, new BridgeGame());
+        OutputView.printResult(bridgeGame);
     }
 
     private List<String> generateBridge() {
@@ -25,7 +26,7 @@ public class GameController {
         return bridge;
     }
 
-    private void crossABridge(List<String> bridge, BridgeGame bridgeGame) {
+    private BridgeGame crossABridge(List<String> bridge, BridgeGame bridgeGame) {
         do {
             inputController.movePlayer(bridgeGame);
             bridgeGame.checkMovingResult(bridge);
@@ -34,5 +35,6 @@ public class GameController {
         if (!Result.isIsSuccessOrFailure() && InputController.checkRetry(bridgeGame)) {
             crossABridge(bridge, bridgeGame);
         }
+        return bridgeGame;
     }
 }
