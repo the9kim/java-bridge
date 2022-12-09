@@ -40,4 +40,8 @@ public class Result {
     public static List<Answer> getMovingResult() {
         return movingResult;
     }
+
+    public static void resultMovingResult() {
+        movingResult.clear();
+    }
 }

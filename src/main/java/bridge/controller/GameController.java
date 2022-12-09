@@ -29,9 +29,10 @@ public class GameController {
         do {
             inputController.movePlayer(bridgeGame);
             bridgeGame.checkMovingResult(bridge);
-            System.out.println(Result.getMovingResult());
             OutputView.printMap(bridgeGame);
         } while (bridgeGame.getPlayerRoute().size() < bridge.size() && Result.isIsSuccessOrFailure());
-
+        if (!Result.isIsSuccessOrFailure() && InputController.checkRetry(bridgeGame)) {
+            crossABridge(bridge, bridgeGame);
+        }
     }
 }

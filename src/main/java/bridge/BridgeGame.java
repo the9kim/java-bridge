@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BridgeGame {
 
+    private static final String RETRY_DECISION = "R";
     private List<String> playerRoute = new ArrayList<>();
 
     public void move(String movingInput) {
@@ -21,7 +22,14 @@ public class BridgeGame {
         Result.updateResult(Answer.findBy(result));
     }
 
-    public void retry() {
+    public boolean retry(String retryCommand) {
+        validateRetryCommand(retryCommand);
+        if (retryCommand.equals(RETRY_DECISION)) {
+            resetPlayerRoute();
+            Result.resultMovingResult();
+            return true;
+        }
+        return false;
     }
 
     private void validateMovingInput(String movingInput) {
@@ -43,5 +51,15 @@ public class BridgeGame {
 
     public List<String> getPlayerRoute() {
         return playerRoute;
+    }
+
+    private void validateRetryCommand(String retryCommand) {
+        if (!retryCommand.equals("R") && !retryCommand.equals("Q")) {
+            throw new IllegalArgumentException("[ERROR] R 또는 Q가 아닙니다");
+        }
+    }
+
+    private void resetPlayerRoute() {
+        playerRoute.clear();
     }
 }

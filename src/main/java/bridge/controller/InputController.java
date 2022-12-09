@@ -29,4 +29,14 @@ public class InputController {
             }
         }
     }
+
+    public static boolean checkRetry(BridgeGame bridgeGame) {
+        while (true) {
+            try {
+                return bridgeGame.retry(InputView.readGameCommand());
+            } catch (IllegalArgumentException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
 }
