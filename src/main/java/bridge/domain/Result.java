@@ -17,9 +17,7 @@ public class Result {
 
 
     private static void addResult(Answer answer) {
-        if (answer.isAnswer() == false) {
-            trialNumber++;
-        }
+        movingResult.add(answer);
     }
 
     private static void updateTrialNumber(Answer answer) {
@@ -30,8 +28,16 @@ public class Result {
     private static void updateSuccess(Answer answer) {
         if (answer.isAnswer()) {
             isSuccessOrFailure = true;
+            return;
         }
         isSuccessOrFailure = false;
     }
 
+    public static boolean isIsSuccessOrFailure() {
+        return isSuccessOrFailure;
+    }
+
+    public static List<Answer> getMovingResult() {
+        return movingResult;
+    }
 }

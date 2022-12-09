@@ -15,11 +15,10 @@ public class BridgeGame {
         playerRoute.add(movingInput);
     }
 
-    public boolean checkMovingResult(List<String> bridge) {
+    public void checkMovingResult(List<String> bridge) {
         int index = getRouteIndex();
         boolean result = compareBridgeAndPlayer(bridge, index);
         Result.updateResult(Answer.findBy(result));
-        return;
     }
 
     public void retry() {
@@ -40,5 +39,9 @@ public class BridgeGame {
             return true;
         }
         return false;
+    }
+
+    public List<String> getPlayerRoute() {
+        return playerRoute;
     }
 }

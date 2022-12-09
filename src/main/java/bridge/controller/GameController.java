@@ -1,6 +1,8 @@
 package bridge.controller;
 
 import bridge.BridgeGame;
+import bridge.OutputView;
+import bridge.domain.Result;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class GameController {
 
     public void run() {
         List<String> bridge = generateBridge();
+        System.out.println(bridge);
         crossABridge(bridge, new BridgeGame());
     }
 
@@ -25,9 +28,10 @@ public class GameController {
     private void crossABridge(List<String> bridge, BridgeGame bridgeGame) {
         do {
             inputController.movePlayer(bridgeGame);
-            boolean result = bridgeGame.checkMovingResult(bridge);
-
-        } while ();
+            bridgeGame.checkMovingResult(bridge);
+            System.out.println(Result.getMovingResult());
+            OutputView.printMap(bridgeGame);
+        } while (bridgeGame.getPlayerRoute().size() < bridge.size() && Result.isIsSuccessOrFailure());
 
     }
 }

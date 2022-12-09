@@ -40,7 +40,7 @@ public class InputView {
 
     private static void isDigit(String input) {
         for (int i = 0; i < input.length(); i++) {
-            if (Character.isDigit(input.charAt(i))) {
+            if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException("[ERROR] 정수가 아닙니다.");
             }
         }
