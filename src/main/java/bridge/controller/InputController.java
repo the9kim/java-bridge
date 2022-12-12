@@ -20,11 +20,10 @@ public class InputController {
         }
     }
 
-    public static void acrossABridge(BridgeGame bridgeGame) {
+    public static String acrossABridge(BridgeGame bridgeGame) {
         while (true) {
             try {
-                String input = InputView.readMoving();
-                bridgeGame.move(input);
+                return bridgeGame.move(InputView.readMoving());
             } catch (IllegalArgumentException e2) {
                 System.out.println(e2.getMessage());
             }

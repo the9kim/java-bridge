@@ -2,6 +2,7 @@ package bridge.controller;
 
 import bridge.BridgeGame;
 import bridge.domain.Result;
+import bridge.view.OutputView;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class GameController {
     public void run() {
         List<String> bridge = generateBridge();
         System.out.println(bridge);
-        BridgeGame bridgeGame = acrossABridge(new Result());
+        BridgeGame bridgeGame = acrossABridge(bridge);
+        System.out.println(bridgeGame.getRoute());
 
     }
 
@@ -25,9 +27,13 @@ public class GameController {
         return bridge;
     }
 
-    private BridgeGame acrossABridge(Result result) {
+    private BridgeGame acrossABridge(List<String> bridge) {
         BridgeGame bridgeGame = new BridgeGame();
-        InputController.acrossABridge(bridgeGame);
+        do {
+            String direction = InputController.acrossABridge(bridgeGame);
+            bridgeGame.checkResult(bridge, direction);
+            System.out.println(Result.getResult());
+        } while (bridgeGame.getRoute().size() < bridge.size());
         return bridgeGame;
     }
 
