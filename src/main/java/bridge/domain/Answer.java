@@ -20,4 +20,8 @@ public enum Answer {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException());
     }
+
+    public String getIndicator() {
+        return indicator;
+    }
 }

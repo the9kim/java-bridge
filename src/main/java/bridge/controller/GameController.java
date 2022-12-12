@@ -32,7 +32,7 @@ public class GameController {
         do {
             String direction = InputController.acrossABridge(bridgeGame);
             bridgeGame.checkResult(bridge, direction);
-            System.out.println(Result.getResult());
+            OutputView.printMap(bridgeGame);
         } while (bridgeGame.getRoute().size() < bridge.size());
         return bridgeGame;
     }
