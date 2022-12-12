@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class InputView {
 
+    private static final String RETRY_COMMAND = "R";
+
     public static int readBridgeSize() {
         System.out.println("다리 건너기 게임을 시작합니다.\n");
         System.out.println("다리의 길이를 입력해주세요.");
@@ -28,8 +30,14 @@ public class InputView {
     /**
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
-    public String readGameCommand() {
-        return null;
+    public static boolean readGameCommand() {
+        System.out.println("게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)");
+        String command = Console.readLine();
+        validateCommand(command);
+        if (command.equals(RETRY_COMMAND)) {
+            return true;
+        }
+        return false;
     }
 
     private static void validateBridgeSize(String bridgeSize) {
@@ -44,6 +52,13 @@ public class InputView {
         String format = "[UD]";
         if (!Pattern.matches(format, direction)) {
             throw new IllegalArgumentException("[ERROR] 방향 입력값이 양식에 맞지 않습니다.");
+        }
+    }
+
+    private static void validateCommand(String command) {
+        String format = "[RQ]";
+        if (!Pattern.matches(format, command)) {
+            throw new IllegalArgumentException("[ERROR] 재시도 명령이 양식에 맞지 않습니다.");
         }
     }
 }

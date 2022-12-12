@@ -1,6 +1,7 @@
 package bridge.controller;
 
 import bridge.BridgeGame;
+import bridge.domain.Answer;
 import bridge.domain.Result;
 import bridge.view.OutputView;
 
@@ -33,8 +34,16 @@ public class GameController {
             String direction = InputController.acrossABridge(bridgeGame);
             bridgeGame.checkResult(bridge, direction);
             OutputView.printMap(bridgeGame);
-        } while (bridgeGame.getRoute().size() < bridge.size());
+        } while (bridgeGame.getRoute().size() < bridge.size() && !Result.getResult().contains(Answer.WRONG));
+        checkRetry(bridge, bridgeGame);
         return bridgeGame;
+    }
+
+    private void checkRetry(List<String> bridge, BridgeGame bridgeGame) {
+        if (Result.getResult().contains(Answer.WRONG) && inputController.checkRetry()) {
+            bridgeGame.retry();
+            acrossABridge(bridge);
+        }
     }
 
 }

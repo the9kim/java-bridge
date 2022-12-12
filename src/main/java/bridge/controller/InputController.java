@@ -29,4 +29,14 @@ public class InputController {
             }
         }
     }
+
+    public boolean checkRetry() {
+        while (true) {
+            try {
+                return InputView.readGameCommand();
+            } catch (IllegalArgumentException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
 }
