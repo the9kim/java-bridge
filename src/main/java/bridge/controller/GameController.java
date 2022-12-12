@@ -19,7 +19,8 @@ public class GameController {
         List<String> bridge = generateBridge();
         System.out.println(bridge);
         BridgeGame bridgeGame = acrossABridge(bridge);
-        System.out.println(bridgeGame.getRoute());
+        printResult(bridgeGame);
+
 
     }
 
@@ -35,15 +36,20 @@ public class GameController {
             bridgeGame.checkResult(bridge, direction);
             OutputView.printMap(bridgeGame);
         } while (bridgeGame.getRoute().size() < bridge.size() && !Result.getResult().contains(Answer.WRONG));
-        checkRetry(bridge, bridgeGame);
+        bridgeGame = checkRetry(bridge, bridgeGame);
         return bridgeGame;
     }
 
-    private void checkRetry(List<String> bridge, BridgeGame bridgeGame) {
+    private BridgeGame checkRetry(List<String> bridge, BridgeGame bridgeGame) {
         if (Result.getResult().contains(Answer.WRONG) && inputController.checkRetry()) {
             bridgeGame.retry();
-            acrossABridge(bridge);
+            bridgeGame = acrossABridge(bridge);
         }
+        return bridgeGame;
+    }
+
+    private void printResult(BridgeGame bridgeGame) {
+        OutputView.printResult(bridgeGame);
     }
 
 }
