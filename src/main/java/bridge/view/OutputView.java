@@ -3,9 +3,6 @@ package bridge.view;
 import bridge.BridgeGame;
 import bridge.domain.Result;
 
-/**
- * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
- */
 public class OutputView {
 
     private static final String OPENING_BRACKET = "[";
@@ -16,12 +13,11 @@ public class OutputView {
     private static final String LOWER_DIRECTION = "D";
 
 
-
     public static void printMap(BridgeGame bridgeGame) {
         StringBuilder upperMap = addUpperMap(new StringBuilder(), bridgeGame);
         StringBuilder lowerMap = addLowerMap(new StringBuilder(), bridgeGame);
         System.out.println(upperMap);
-        System.out.println(lowerMap+"\n");
+        System.out.println(lowerMap + "\n");
     }
 
     private static StringBuilder addUpperMap(StringBuilder stringBuilder, BridgeGame bridgeGame) {
@@ -52,7 +48,7 @@ public class OutputView {
     }
 
     private static String addDivider(int index) {
-        if (index < Result.getResult().size()-1) {
+        if (index < Result.getResult().size() - 1) {
             return BLANK + DIVIDER + BLANK;
         }
         return "";

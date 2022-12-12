@@ -2,7 +2,6 @@ package bridge.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.text.Format;
 import java.util.regex.Pattern;
 
 public class InputView {
@@ -17,9 +16,6 @@ public class InputView {
         return Integer.parseInt(bridgeSize);
     }
 
-    /**
-     * 사용자가 이동할 칸을 입력받는다.
-     */
     public static String readMoving() {
         System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
         String direction = Console.readLine();
@@ -27,9 +23,6 @@ public class InputView {
         return direction;
     }
 
-    /**
-     * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
-     */
     public static boolean readGameCommand() {
         System.out.println("게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)");
         String command = Console.readLine();

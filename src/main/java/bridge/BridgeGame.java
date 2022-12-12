@@ -5,8 +5,6 @@ import bridge.domain.Result;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -14,6 +12,7 @@ import java.util.stream.IntStream;
 public class BridgeGame {
 
     List<String> route = new ArrayList<>();
+
     public String move(String direction) {
         route.add(direction);
         return direction;
