@@ -12,6 +12,7 @@ public class GameController {
 
     public void run() {
         List<String> bridge = generateBridge();
+        System.out.println(bridge);
     }
 
     private List<String> generateBridge() {
