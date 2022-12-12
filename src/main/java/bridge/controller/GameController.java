@@ -16,5 +16,6 @@ public class GameController {
 
     private List<String> generateBridge() {
         List<String> bridge = inputController.generateBridge();
+        return bridge;
     }
 }

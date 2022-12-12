@@ -1,6 +1,6 @@
 package bridge.view;
 
-import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Console;
 
 import java.text.Format;
 import java.util.regex.Pattern;
@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 public class InputView {
 
     public static int readBridgeSize() {
+        System.out.println("다리 건너기 게임을 시작합니다.\n");
+        System.out.println("다리의 길이를 입력해주세요.");
         String bridgeSize = Console.readLine();
         validateBridgeSize(bridgeSize);
         return Integer.parseInt(bridgeSize);
@@ -30,7 +32,7 @@ public class InputView {
     private static void validateBridgeSize(String bridgeSize) {
         String format = "\\d+";
 
-        if (Pattern.matches(format, bridgeSize)) {
+        if (!Pattern.matches(format, bridgeSize)) {
             throw new IllegalArgumentException("[ERROR] 다리 길이 입력값이 양식에 맞지 않습니다.");
         }
     }

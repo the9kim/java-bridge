@@ -11,8 +11,8 @@ public class InputController {
     public List<String> generateBridge() {
         while (true) {
             try {
-                BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator);
-                return bridgeMaker.makeBridge(InputView.readBridgeSize();)
+                BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+                return bridgeMaker.makeBridge(InputView.readBridgeSize());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
