@@ -18,8 +18,11 @@ public class InputView {
     /**
      * 사용자가 이동할 칸을 입력받는다.
      */
-    public String readMoving() {
-        return null;
+    public static String readMoving() {
+        System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
+        String direction = Console.readLine();
+        validateDirection(direction);
+        return direction;
     }
 
     /**
@@ -34,6 +37,13 @@ public class InputView {
 
         if (!Pattern.matches(format, bridgeSize)) {
             throw new IllegalArgumentException("[ERROR] 다리 길이 입력값이 양식에 맞지 않습니다.");
+        }
+    }
+
+    private static void validateDirection(String direction) {
+        String format = "[UD]";
+        if (!Pattern.matches(format, direction)) {
+            throw new IllegalArgumentException("[ERROR] 방향 입력값이 양식에 맞지 않습니다.");
         }
     }
 }

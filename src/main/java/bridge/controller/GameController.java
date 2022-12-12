@@ -1,5 +1,8 @@
 package bridge.controller;
 
+import bridge.BridgeGame;
+import bridge.domain.Result;
+
 import java.util.List;
 
 public class GameController {
@@ -13,10 +16,18 @@ public class GameController {
     public void run() {
         List<String> bridge = generateBridge();
         System.out.println(bridge);
+        BridgeGame bridgeGame = acrossABridge(new Result());
+
     }
 
     private List<String> generateBridge() {
         List<String> bridge = inputController.generateBridge();
         return bridge;
     }
+
+    private BridgeGame acrossABridge(Result result) {
+        InputController.acrossABridge(new BridgeGame());
+        return null;
+    }
+
 }
