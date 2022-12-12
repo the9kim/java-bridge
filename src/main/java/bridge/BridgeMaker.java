@@ -14,7 +14,14 @@ public class BridgeMaker {
     }
 
     public List<String> makeBridge(int size) {
+        validateSize(size);
 
         return null;
+    }
+
+    private void validateSize(int size) {
+        if (size < 3 || size > 20) {
+            throw new IllegalArgumentException("[ERROR] 3이상 20이하 숫자만 입력 가능합니다.");
+        }
     }
 }
