@@ -26,8 +26,9 @@ public class GameController {
     }
 
     private BridgeGame acrossABridge(Result result) {
-        InputController.acrossABridge(new BridgeGame());
-        return null;
+        BridgeGame bridgeGame = new BridgeGame();
+        InputController.acrossABridge(bridgeGame);
+        return bridgeGame;
     }
 
 }

@@ -24,6 +24,7 @@ public class InputController {
         while (true) {
             try {
                 String input = InputView.readMoving();
+                bridgeGame.move(input);
             } catch (IllegalArgumentException e2) {
                 System.out.println(e2.getMessage());
             }
